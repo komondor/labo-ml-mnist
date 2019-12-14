@@ -31,15 +31,23 @@ async function main() {
 
   await model.fit(trainData, labelData, {
     batchSize: 32,
-    epochs: 1,
+    epochs: 2,
     shuffle: true,
-    onEpochEnd: (epoch, logs) => {
-      console.log(5);
-      return null;
+    callbacks: {
+      onBatchEnd: (batch, logs) => {
+        //console.log(batch);
+      },
+      onTrainBegin: logs => {
+        // logs -> tf.logs
+        console.log("The training is starting...");
+      }
     }
     // callbacks: tf.node.tensorBoard("/tmp/f}it_logs_1")
   });
+
+  console.log(t);
   model.predict(reshapeImage).print();
+
   return null;
 }
 
