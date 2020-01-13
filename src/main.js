@@ -45,7 +45,6 @@ async function main() {
     // callbacks: tf.node.tensorBoard("/tmp/f}it_logs_1")
   });
 
-  console.log(t);
   model.predict(reshapeImage).print();
 
   return null;
